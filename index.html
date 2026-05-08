@@ -34,6 +34,14 @@
       const [ledgerData, setLedgerData] = useState({});
       const [carryoverData, setCarryoverData] = useState({});
       const [price, setPrice] = useState(MEAL_PRICE);
+      useEffect(() => {
+  const savedPrice = localStorage.getItem('meal_price');
+  if (savedPrice) setPrice(parseInt(savedPrice));
+}, []);
+
+useEffect(() => {
+  localStorage.setItem('meal_price', price);
+}, [price]);
 
       const appId = 'meal-ledger-v5-local';
 
